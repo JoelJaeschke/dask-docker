@@ -1,7 +1,7 @@
 ARG BASE_CONTAINER=condaforge/mambaforge:23.3.1-1
 FROM $BASE_CONTAINER
 
-ARG python="3.10"
+ARG python="3.11"
 ARG release
 
 SHELL ["/bin/bash", "-c"]
@@ -18,6 +18,15 @@ RUN mamba install -y \
     dask=${DASK_VERSION} \
     cachey \
     streamz \
+    xarray \
+    gcsfs \
+    s3fs \
+    numba \
+    geopandas \
+    pandas \
+    rioxarray \
+    rasterio \
+    gdal \
     && mamba clean -tipy \
     && find /opt/conda/ -type f,l -name '*.a' -delete \
     && find /opt/conda/ -type f,l -name '*.pyc' -delete \
